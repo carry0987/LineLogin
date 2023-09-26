@@ -66,8 +66,6 @@ class LineProfile
         return $result;
     }
 
-
-
     /**
      * Fetch User Access Token
      *
