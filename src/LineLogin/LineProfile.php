@@ -20,7 +20,7 @@ class LineProfile
      * @return bool|mixed|string
      * @throws LineAccessTokenNotFoundException
      */
-    public function get($code)
+    public function getLineProfile($code)
     {
         $accessToken = self::getAccessToken($code);
         $headerData = [

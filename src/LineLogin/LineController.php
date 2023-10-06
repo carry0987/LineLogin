@@ -30,7 +30,7 @@ class LineController
     public function getLineProfile($code)
     {
         $lineProfile = new LineProfile($this->lineConfig);
-        $profile = $lineProfile->get($code);
+        $profile = $lineProfile->getLineProfile($code);
         return $profile;
     }
 
