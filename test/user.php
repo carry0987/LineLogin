@@ -1,15 +1,14 @@
 <?php
-require_once('../src/LineLogin/ConfigManager.php');
-require_once('../src/LineLogin/LineAuthorization.php');
-require_once('../src/LineLogin/LineProfile.php');
-require_once('../src/LineLogin/LineController.php');
+require __DIR__.'/../vendor/autoload.php';
 require_once('./config.php');
+
+use carry0987\LineLogin as LineLogin;
 
 if (!session_id()) {
     session_start();
 }
 
-$Line = new carry0987\LineLogin\LineController(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SCOPE);
+$Line = new LineLogin\LineController(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SCOPE);
 
 $user = null;
 if (isset($_COOKIE['access_token'])) {

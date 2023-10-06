@@ -1,9 +1,8 @@
 <?php
-require_once('../src/LineLogin/ConfigManager.php');
-require_once('../src/LineLogin/LineAuthorization.php');
-require_once('../src/LineLogin/LineProfile.php');
-require_once('../src/LineLogin/LineController.php');
+require __DIR__.'/../vendor/autoload.php';
 require_once('./config.php');
+
+use carry0987\LineLogin as LineLogin;
 
 define('TWENTY_DAYS', time()+3600*24*20);
 
@@ -20,7 +19,7 @@ if ($session_state !== $state) {
     exit('Access Denied');
 }
 
-$Line = new carry0987\LineLogin\LineController(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SCOPE);
+$Line = new LineLogin\LineController(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SCOPE);
 
 $access_token = $Line->getAccessToken($code);
 //$_SESSION['access_token'] = $access_token;
