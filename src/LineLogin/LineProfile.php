@@ -4,6 +4,8 @@ namespace carry0987\LineLogin;
 class LineProfile
 {
     private $configManager;
+    private $profile_url = 'https://api.line.me/v2/profile';
+    private $token_url = 'https://api.line.me/oauth2/v2.1/token';
 
     public function __construct(ConfigManager $configManager)
     {
@@ -28,7 +30,7 @@ class LineProfile
         ];
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headerData);
-        curl_setopt($ch, CURLOPT_URL, 'https://api.line.me/v2/profile');
+        curl_setopt($ch, CURLOPT_URL, $this->profile_url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $result = curl_exec($ch);
@@ -56,7 +58,7 @@ class LineProfile
         ];
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headerData);
-        curl_setopt($ch, CURLOPT_URL, 'https://api.line.me/v2/profile');
+        curl_setopt($ch, CURLOPT_URL, $this->profile_url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $result = curl_exec($ch);
@@ -79,7 +81,7 @@ class LineProfile
         $config = $this->configManager->getConfig();
 
         // Create parameters for POST request
-        $url = 'https://api.line.me/oauth2/v2.1/token';
+        $url = $this->token_url;
         $query = '';
         $query .= 'grant_type='.urlencode('authorization_code').'&';
         $query .= 'code='.urlencode($code).'&';
