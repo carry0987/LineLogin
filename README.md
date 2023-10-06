@@ -6,3 +6,6 @@ This project using composer.
 ```
 $ composer require carry0987/line-login
 ```
+
+## Usage
+You can create the Line login button by this [Link](https://developers.line.biz/)
